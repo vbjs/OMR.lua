@@ -23,7 +23,7 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
     vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 
-queueonteleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/fissurectomy/open-source-code/main/queue.lua"))()')
+queueonteleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/vbjs/OMR.lua/refs/heads/main/Autofarm.lua"))()')
 
 -- REJOIN FUNCTION --
 local rejoin = function()

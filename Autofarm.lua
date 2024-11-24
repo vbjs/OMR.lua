@@ -1,3 +1,5 @@
+task.wait(20)
+
 getgenv().Config = {
   ["Enabled"] = true,
   ["AutoAscend"] = true,
@@ -14,6 +16,12 @@ asclabel = plr.PlayerGui.PlayerUI.Settings.Progression.ScrollingFrame.Ascension.
 local ascendremote = game.ReplicatedStorage.Remotes.Ascend
 local renew = game.ReplicatedStorage.Remotes.Renew
 local loadlayout = game.ReplicatedStorage.Remotes.LoadLayout
+
+local args = {[1] = 1}
+game:GetService("ReplicatedStorage").Remotes.LoadSlot:FireServer(unpack(args))
+task.wait(10)
+local todel = game:GetService("Players").LocalPlayer.PlayerGui.Intro
+todel:Destroy()
 
 -- ANTI AFK --
 local vu = game:GetService("VirtualUser")
@@ -83,7 +91,7 @@ while task.wait() do
      end
     end
   if Config.AutoAscend then
-    if plr.Data.Renewal.Value >= (tonumber(string.match(asc, "%d+"))*2) then
+    if plr.Data.Renewal.Value >= tonumber(string.match(asc, "%d+")) then
       task.wait(1)
       ascendremote:FireServer()
       rejoin()

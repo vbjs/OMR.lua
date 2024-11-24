@@ -51,7 +51,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
      asc = asclabel.Text 
     else
      asclabel = plr:WaitForChild("PlayerGui"):WaitForChild("PlayerUI"):WaitForChild("Settings"):WaitForChild("Progression"):WaitForChild("ScrollingFrame"):WaitForChild("Ascension"):WaitForChild("Cost")
-      if asclabel then asc = asclabel.Text
+      if asclabel then asc = asclabel.Text end
     end
 end)
 

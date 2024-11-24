@@ -83,7 +83,7 @@ while task.wait() do
      end
     end
   if Config.AutoAscend then
-    if plr.Data.Renewal.Value >= (tonumber(string.match(asctext, "%d+"))*2) then
+    if plr.Data.Renewal.Value >= (tonumber(string.match(asc, "%d+"))*2) then
       task.wait(1)
       ascendremote:FireServer()
       rejoin()

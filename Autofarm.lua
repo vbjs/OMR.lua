@@ -94,6 +94,7 @@ while task.wait() do
     if plr.Data.Renewal.Value >= tonumber(string.match(asc, "%d+")) then
       task.wait(1)
       ascendremote:FireServer()
+      task.wait(5)
       rejoin()
     end
   end

@@ -10,6 +10,12 @@ getgenv().Config = {
   ["Third"] = 3
 }
 
+local args = {[1] = 1}
+game:GetService("ReplicatedStorage").Remotes.LoadSlot:FireServer(unpack(args))
+task.wait(7)
+local todel = game:GetService("Players").LocalPlayer.PlayerGui.Intro
+todel:Destroy()
+
 local game = game
 plr = game.Players.LocalPlayer
 skiplabel = plr.PlayerGui.PlayerUI.Settings.Progression.ScrollingFrame.Renewal.LifeSkip
@@ -31,12 +37,6 @@ Dir.DescendantAdded:Connect(function(Err)
     end
 end)
 
-local args = {[1] = 1}
-game:GetService("ReplicatedStorage").Remotes.LoadSlot:FireServer(unpack(args))
-task.wait(7)
-local todel = game:GetService("Players").LocalPlayer.PlayerGui.Intro
-todel:Destroy()
-
 -- ANTI AFK --
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -49,6 +49,7 @@ queueonteleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/vbjs
 
 -- REJOIN FUNCTION --
 local rejoin = function()
+print("rejoined")
 plr:Kick("You just ascended -> rejoining...")
 task.wait()
 game:GetService("TeleportService"):Teleport(game.PlaceId, plr)
@@ -58,7 +59,6 @@ end
 -- SKIP LABEL DETECTION -- 
 game:GetService("RunService").Heartbeat:Connect(function()
     task.wait(1)
-    time = time+1
     if skiplabel then
       skip = skiplabel.Text
     else
@@ -74,9 +74,6 @@ game:GetService("RunService").Heartbeat:Connect(function()
      asclabel = plr:WaitForChild("PlayerGui"):WaitForChild("PlayerUI"):WaitForChild("Settings"):WaitForChild("Progression"):WaitForChild("ScrollingFrame"):WaitForChild("Ascension"):WaitForChild("Cost")
       if asclabel then asc = asclabel.Text end
     asc = asclabel.Text
-    end
-    if time >= 1800 then
-       rejoin()
     end
 end)
 
@@ -108,6 +105,7 @@ while task.wait() do
     end
   if Config.AutoAscend then
     if plr.Data.Renewal.Value >= tonumber(string.match(asc, "%d+")) then
+    
       task.wait(1)
       ascendremote:FireServer()
       task.wait(5)
